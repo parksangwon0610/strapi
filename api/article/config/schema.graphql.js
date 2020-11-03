@@ -5,7 +5,6 @@ module.exports = {
     articleBySlug(slug:String): [Article]
   `,
   mutation: `
-    createArticle(input:createArticleInput): createArticlePayload
   `,
   type: {
   },
@@ -17,10 +16,6 @@ module.exports = {
       }
     },
     Mutation: {
-      createArticle: {
-        description: 'overwrite create Article without title duplication',
-        resolver: 'application::article.article.articleBySlug',
-      }
     }
   },
 };
