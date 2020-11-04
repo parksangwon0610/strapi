@@ -29,12 +29,18 @@
       "required": false
     },
     "comments": {
-      "collection": "comment",
-      "via": "article"
+      "via": "article",
+      "collection": "comment"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "unique": false
+    },
+    "members": {
+      "via": "articles",
+      "collection": "member",
+      "dominant": true
     }
   }
 }

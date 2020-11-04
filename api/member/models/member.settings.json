@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "name": "member",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "profile": {
+      "type": "richtext"
+    },
+    "picture": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "articles": {
+      "collection": "article",
+      "via": "members"
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "writer"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

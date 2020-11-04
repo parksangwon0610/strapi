@@ -15,8 +15,12 @@
       "type": "text"
     },
     "article": {
+      "model": "article",
+      "via": "comments"
+    },
+    "writer": {
       "via": "comments",
-      "model": "article"
+      "model": "member"
     }
   }
 }
