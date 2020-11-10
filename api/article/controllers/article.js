@@ -13,11 +13,22 @@ module.exports = {
   },
 
   addMyComment: async function(ctx) {
-    console.log('addMyComment data >>> ', ctx.request.body);
-    console.log('addMyComment jwt  >>> ', ctx.header.authorization);
-    console.log('addMyComment user  >>> ', ctx.state.user);
 
-    const requestQueryData = ctx.request.body;
+    const {
+      content,
+      article
+    } = ctx.request.body;
+    const {
+      id
+    } = ctx.params;
+
+    const requestQueryData = {
+      content: content,
+      article: {
+        id: id || article.id
+      }
+    };
+
     const foundMember = await strapi.services.member.findOne({user: ctx.state.user.id});
 
     const createdComment = await strapi.services.comment.create({

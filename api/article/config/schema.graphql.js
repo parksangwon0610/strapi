@@ -22,7 +22,7 @@ module.exports = {
     Mutation: {
       addMyComment: {
         description: 'content 필드값과 현재 선택된 article 번호를 인수로 받아 request header에 포함된 user가 자동으로 writer로 저장되는 기능',
-        resolver: 'application::article.article.addMyComment',
+        resolver: 'application::article.article.addMyComment'
       }
     }
   },

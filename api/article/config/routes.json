@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/articles/:id/comments",
+      "handler": "article.addMyComment",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
