@@ -1,5 +1,6 @@
 'use strict';
 const slugify = require('slugify');
+const redis = require('../../utils/services/redis');
 module.exports = {
 
   findBySlug: async function(ctx) {
@@ -36,6 +37,11 @@ module.exports = {
       article: requestQueryData.article.id,
       writer: foundMember.id
     });
+
+    // 요청 처리가 끝나면 messageAdded topic에 publish 함
+    strapi.services.pubsub.publish("messageAdded", {
+      messageAdded: createdComment.content
+    })
     console.log('created Comment >>> ', createdComment);
     return createdComment;
   }

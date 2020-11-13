@@ -10,10 +10,10 @@ module.exports = {
   resolver: {
     Query: {},
     Mutation: {
-      attachRestaurantToChef: {
-        description: 'Attach a restaurant to an chef',
-        resolver: 'application::restaurant.restaurant.attachToChef',
-      }
+      // attachRestaurantToChef: {
+      //   description: 'Attach a restaurant to an chef',
+      //   resolver: 'application::restaurant.restaurant.attachToChef',
+      // }
     }
   },
 };
