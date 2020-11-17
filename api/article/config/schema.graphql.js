@@ -6,6 +6,7 @@ module.exports = {
   `,
   query: `
     articleBySlug(slug:String): [Article]
+    commentsInArticles(id:String): [Comment]
   `,
   mutation: `
     addMyComment(content: String, article: ArticleIDInput ): Comment
@@ -17,6 +18,10 @@ module.exports = {
       articleBySlug: {
         description: 'Find Article by Slug',
         resolver: 'application::article.article.articleBySlug',
+      },
+      commentsInArticles: {
+        descriptions: '',
+        resolver: 'application::article.article.comments'
       }
     },
     Mutation: {

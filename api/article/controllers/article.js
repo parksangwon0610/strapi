@@ -13,6 +13,17 @@ module.exports = {
     return await strapi.services.article.find({slug:ctx.query._slug});
   },
 
+  comments: async function(ctx) {
+    console.log('params >>> ', ctx.params);
+    console.log('id:ctx.params.id >>> ', ctx.params.id);
+
+    const foundArticle = await strapi.services.article.findOne({id:ctx.params.id});
+    console.log('foundArticle >>> ', foundArticle);
+    const comments = foundArticle.comments;
+    console.log('comments >>> ', comments);
+    return comments;
+  },
+
   addMyComment: async function(ctx) {
 
     const {
@@ -39,9 +50,12 @@ module.exports = {
     });
 
     // 요청 처리가 끝나면 messageAdded topic에 publish 함
-    strapi.services.pubsub.publish("messageAdded", {
-      messageAdded: createdComment.content
-    })
+    strapi.services.pubsub.publish(
+      "messageAdded",
+      {
+        messageAdded: createdComment.content
+      }
+      )
     console.log('created Comment >>> ', createdComment);
     return createdComment;
   }

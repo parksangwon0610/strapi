@@ -32,12 +32,12 @@ module.exports = {
       },
     };
 
-    // setInterval(() => {
-    //   pubsub.publish("messageAdded", {
-    //     messageAdded: `😘H1ello World!😁\n
-    //             ${faker.lorem.sentence()}`,
-    //   })
-    // }, 1000);
+    setInterval(() => {
+      pubsub.publish("messageAdded", {
+        messageAdded: `😘H1ello World!😁\n
+                ${faker.lorem.sentence()}`,
+      })
+    }, 1000);
     const WS_PORT = 3000; // need to move this declaration to a separate env setting file
     // Create WebSocket listener server
     const websocketServer = createServer((request, response) => {
@@ -48,7 +48,7 @@ module.exports = {
     });
     // Bind it to port and start listening
     websocketServer.listen(WS_PORT, () => console.log(
-      `Websocket Server is now running on http://localhost:${WS_PORT}`
+      `Websocket Server is now running on ws://localhost:${WS_PORT}`
     ));
     const schema = makeExecutableSchema({
       typeDefs,
